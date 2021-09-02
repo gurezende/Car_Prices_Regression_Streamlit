@@ -25,14 +25,14 @@ from PIL import Image
 # ----------------------------------------------------------------------------------
 
 # Carregar dataset de treinamento
-path = 'C:/Users/1770858/Documents/Gus/Streamlit/carros.csv'
+path = 'carros.csv'
 df = pd.read_csv(path)
 
 # ----------------------------------------------------------------------------------
 # Imagem de Cabeçalho
 # ----------------------------------------------------------------------------------
 # Codifica imagem
-image = Image.open('C:/Users/1770858/Documents/Gus/Streamlit/consultor-logo.png')
+image = Image.open('consultor-logo.png')
 # Aplica Imagem no App
 st.image(image)
 
