@@ -54,17 +54,21 @@ Foram coletados 1347 registros para o treinamento do modelo.
 """
 
 # Cria colunas para o sumário de dados
-col1, col2, col3 = st.columns(3)
+col1, col2, col3, col4 = st.columns(4)
 # coluna 1
 with col1:
+    st.title(df.car.count())
+    st.text('registros')
+#coluna 2
+with col2:
     st.title(df.car.nunique())
     st.text('modelos')
-# coluna 2
-with col2:
-    st.title(df.fabricante.nunique())
-    st.text('fabricantes')
 # coluna 3
 with col3:
+    st.title(df.fabricante.nunique())
+    st.text('fabricantes')
+# coluna 4
+with col4:
     st.title(df.estado.nunique())
     st.text('estados')
 
