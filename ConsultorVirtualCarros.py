@@ -22,10 +22,6 @@ from sklearn.pipeline import Pipeline
 # Image Reading
 from PIL import Image
 
-# Mapas
-import folium
-from streamlit_folium import folium_static
-
 # ----------------------------------------------------------------------------------
 
 # Carregar dataset de treinamento
