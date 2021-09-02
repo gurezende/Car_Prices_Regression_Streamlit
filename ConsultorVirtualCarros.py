@@ -74,26 +74,6 @@ with col4:
 df_map = df[['estado','latitude', 'longitude', 'preco']]
 df_map.preco = df_map.preco/1000
 
-url = 'C:/Users/1770858/Documents/Gus/Streamlit/'
-#import json
-
-# Carregar o arquivo json
-
-#state_geo = json.load(open(f'{url}brazil_geo.json'))
-# Criar o mapa base
-#m = folium.Map(location=[-15.7801, -47.9292], zoom_start=4)
-#Criar a camada Choroplet
-#folium.Choropleth(
-#    geo_data=state_geo,
-#    name='choropleth',
-#    data=df_map,
-#    columns=['estado', 'preco'],
-#    key_on='feature.id',
-#    fill_color='YlOrRd',
-#    fill_opacity=0.7,
-#    line_opacity=0.2,
-#    legend_name='Preço dos Automóveis Anunciados (em mil R$)'
-#).add_to(m)
 # Mostrar o mapa no App
 #folium_static(m)
 st.map(df_map, zoom=4)
@@ -110,7 +90,7 @@ Aperte Submeter para estimar o valor.
 """
 
 # Carrega o modelo
-filename = url + 'RF_car_prices.sav'
+filename = 'RF_car_prices.sav'
 model = pickle.load(open(filename, 'rb'))
 
 with st.form("my_form"):
