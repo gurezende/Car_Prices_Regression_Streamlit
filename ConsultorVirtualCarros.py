@@ -26,7 +26,7 @@ from PIL import Image
 
 # Carregar dataset de treinamento
 path = 'carros.csv'
-df = pd.read_csv(path)
+df = pd.read_csv(path, encoding='iso-8859-1')
 
 # ----------------------------------------------------------------------------------
 # Imagem de Cabeçalho
