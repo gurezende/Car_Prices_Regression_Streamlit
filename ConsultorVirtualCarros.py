@@ -25,14 +25,14 @@ from PIL import Image
 # ----------------------------------------------------------------------------------
 
 # Carregar dataset de treinamento
-path = 'carros.csv'
+path = 'C:/Users/1770858/Documents/Gus/Streamlit/carros.csv'
 df = pd.read_csv(path, encoding='iso-8859-1')
 
 # ----------------------------------------------------------------------------------
 # Imagem de Cabeçalho
 # ----------------------------------------------------------------------------------
 # Codifica imagem
-image = Image.open('consultor-logo.png')
+image = Image.open('C:/Users/1770858/Documents/Gus/Streamlit/consultor-logo.png')
 # Aplica Imagem no App
 st.image(image)
 
@@ -74,6 +74,26 @@ with col4:
 df_map = df[['estado','latitude', 'longitude', 'preco']]
 df_map.preco = df_map.preco/1000
 
+url = 'C:/Users/1770858/Documents/Gus/Streamlit/'
+#import json
+
+# Carregar o arquivo json
+
+#state_geo = json.load(open(f'{url}brazil_geo.json'))
+# Criar o mapa base
+#m = folium.Map(location=[-15.7801, -47.9292], zoom_start=4)
+#Criar a camada Choroplet
+#folium.Choropleth(
+#    geo_data=state_geo,
+#    name='choropleth',
+#    data=df_map,
+#    columns=['estado', 'preco'],
+#    key_on='feature.id',
+#    fill_color='YlOrRd',
+#    fill_opacity=0.7,
+#    line_opacity=0.2,
+#    legend_name='Preço dos Automóveis Anunciados (em mil R$)'
+#).add_to(m)
 # Mostrar o mapa no App
 #folium_static(m)
 st.map(df_map, zoom=4)
@@ -90,7 +110,7 @@ Aperte Submeter para estimar o valor.
 """
 
 # Carrega o modelo
-filename = 'RF_car_prices.sav'
+filename = url + 'RF_car_prices1.1.sav'
 model = pickle.load(open(filename, 'rb'))
 
 with st.form("my_form"):
@@ -118,6 +138,10 @@ with st.form("my_form"):
     # 'fabricante'
     i_fabricante = st.sidebar.selectbox('Fabricante', sorted( df.fabricante.unique() ) )
 
+    # 'categoria
+    i_cat = st.sidebar.selectbox('Modelo', sorted( df.car[df.fabricante == i_fabricante].unique() ) )
+    i_cat = df.categoria[df.car == i_cat].values[0]
+
     # 'combustível'
     i_combustivel = st.sidebar.selectbox('Tipo de Combustível', df.combustivel.unique() )
 
@@ -131,6 +155,8 @@ with st.form("my_form"):
 
     # df com escolhas do cliente
     df_to_predict = pd.DataFrame({'motor': [i_motor], 'automatico': [i_cambio], 'ano_fabrica': [i_ano], 'km': [int(i_km)],
+                                  'categoria_Camionete':[1 if i_cat == 'Camionete' else 0], 'categoria_Carro':[1 if i_cat == 'Carro' else 0],
+                                  'categoria_Minivan':[1 if i_cat == 'Minivan' else 0], 'categoria_SUV':[1 if i_cat == 'SUV' else 0],
                                   'fabricante_AUDI': [1 if i_fabricante == 'AUDI' else 0],'fabricante_BMW': [1 if i_fabricante == 'BMW' else 0],
                                   'fabricante_CHERY': [1 if i_fabricante == 'CHERY' else 0], 'fabricante_CHEVROLET': [1 if i_fabricante == 'CHEVROLET' else 0],
                                   'fabricante_CITROEN': [1 if i_fabricante == 'CITROEN' else 0],'fabricante_DODGE': [1 if i_fabricante == 'DODGE' else 0],
