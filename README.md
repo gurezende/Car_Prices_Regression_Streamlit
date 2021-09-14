@@ -12,7 +12,7 @@ The main skills demonstrated in this project are:
 * *Testing and Fitting*: There are 5 models in this project and they were improved at each iterations with Feature Engineering, Cross Validation and Grid Search techniques, reaching a 95% of Explained Variance (R-Squared)
 * The Project ends with a Web App created with Streamlit.
 
-[Read the project explanation in this post](https://medium.com/gustavorsantos/how-i-created-a-machine-learning-model-and-deployed-it-with-streamlit-a9d887b98b25)
+[Read the project explanation here](https://medium.com/gustavorsantos/how-i-created-a-machine-learning-model-and-deployed-it-with-streamlit-a9d887b98b25)
 
 [Visit the Web App here](https://share.streamlit.io/gurezende/car_prices_regression_streamlit/main/ConsultorVirtualCarros.py)
 
