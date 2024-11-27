@@ -1,4 +1,4 @@
 streamlit>=0.87.0
 pandas>=1.2.0
 numpy==1.26.1
-scikit-learn>=0.24.1
+scikit-learn==0.24.1
